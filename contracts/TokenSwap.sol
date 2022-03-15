@@ -10,14 +10,6 @@ contract TokenSwap{
     IERC20 TokenA;
     IERC20 TokenB;
 
-    uint decimal = 10**18;
-
-    uint swapId;
-
-    mapping(uint => swapInfo) offer;
-
-    mapping(address => buyerInfo) buyer;
-
     /**
      * Network: Kovan
      * Aggregator: ETH/USD
