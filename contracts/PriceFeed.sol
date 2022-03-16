@@ -2,7 +2,6 @@
 pragma solidity ^0.8.7;
 
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
-#import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/IERC20.sol";
 
 contract PriceFeedConsumer {
 
@@ -13,8 +12,8 @@ contract PriceFeedConsumer {
      * Aggregator: USDT/ETH
      * Address: 0x0bF499444525a23E7Bb61997539725cA2e928138
      */
-    constructor(address aggregator, address _usdt, address _weth) {
-        priceFeed = AggregatorV3Interface(aggregator);
+    constructor() {
+        priceFeed = AggregatorV3Interface(0x0bF499444525a23E7Bb61997539725cA2e928138);
     }
 
     function getLatestPriceAndDecimal() public view returns (int, int) {
