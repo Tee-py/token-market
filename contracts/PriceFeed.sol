@@ -16,7 +16,7 @@ contract PriceFeedConsumer {
         priceFeed = AggregatorV3Interface(0x0bF499444525a23E7Bb61997539725cA2e928138);
     }
 
-    function getLatestPriceAndDecimal() public view returns (int, int) {
+    function getLatestPriceAndDecimal() external returns (int, int) {
         (
             /*uint80 roundID*/,
             int price,
