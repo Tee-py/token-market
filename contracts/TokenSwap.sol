@@ -13,6 +13,8 @@ contract TokenSwap {
     IPriceFeed feed;
     address payable reserve;
 
+    event Swap(address indexed swapper, uint amount);
+
     constructor(address _usdt, address _weth, address _reverve, address _feed){
         usdt = IERC20(_usdt);
         weth = IERC20(_weth);
@@ -25,6 +27,7 @@ contract TokenSwap {
         require(msg.value >= amount*price*decimals, "Insufficient Value for Swap");
         usdt.transferFrom(msg.sender, reserve, amount*10**18);
         weth.transferFrom(reserve, msg.sender, amount*10**18);
+        emit Swap(msg.sender, amount);
     }
 
 
