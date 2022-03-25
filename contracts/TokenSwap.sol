@@ -20,8 +20,9 @@ contract TokenSwap {
         reserve = payable(_reverve);
     }
 
-    function swapToken(uint amount){
+    function swapToken(uint amount) payable {
         (price, decimals) = feed.getLatestPriceAndDecimal();
+        require(msg.value >= amount*price*decimals, "Insufficient Value for Swap");
         usdt.transferFrom(msg.sender, reserve, amount*10**18);
         weth.transferFrom(reserve, msg.sender, amount*10**18);
     }
